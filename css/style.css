@@ -1,0 +1,636 @@
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* MATENI BLOCK TEXT DI SEMUA ELEMEN WEB */
+    * {
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -ms-user-select: none !important;
+    }
+    
+    /* Chrome, Edge, Safari */
+    ::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    /* Firefox */
+    * {
+      scrollbar-width: none;
+    }
+
+    body {
+     background: var(--background-light);
+     transition: background var(--transition);
+     display: flex;
+     flex-direction: column;
+     font-family: "Times New Roman", Times, serif;
+     overflow-x: hidden;
+     overflow-y: auto;
+    }
+    :root[data-theme="dark"] body {
+      background: var(--background-dark);
+    }
+    
+    /* HEADER */
+    header {
+      background: var(--header-light);
+      color: var(--text-trigger-dark);
+      box-shadow: var(--header-shadow-dark);
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+      border-radius: 0 0 20px 20px;
+       /* semua isi tetap di tengah horizontal */
+      z-index: 1000;
+    }
+    :root[data-theme="dark"] header {
+      background: var(--header-dark);
+      color: var(--text-trigger-light);
+      box-shadow: var(--header-shadow-light);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .header-container h1 {
+      font-size: 30px;
+      line-height: 1.2;  /* jarak antar baris, bisa disetel */
+      margin-left: 10px;
+      margin-right: 0px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .frame-exel-1 {
+      margin-top: 0px;   /* biar tidak ketutupan header */
+      margin-bottom: 0px;/* biar tidak ketutupan footer */
+      padding-left: 10px;
+      padding-right: 13px;
+      height: 100vh;
+    }
+    
+    .frame-exel-2 {
+      margin-top: 0px;   /* biar tidak ketutupan header */
+      margin-bottom: 0px;/* biar tidak ketutupan footer */
+      padding-left: 10px;
+      padding-right: 13px;
+      height: 100vh;
+    }
+
+    .exel {
+      border-radius: 10px;
+      border: 2px solid grey;
+    }
+    
+    .content {
+      background-color: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    
+    .content a {
+      color: blue;
+      font-size: 18px;
+      word-break: break-all;
+    }
+    
+    /* FOOTER FIXED */
+    .sheet-footer {
+      background: var(--footer-light);
+      color: var(--text-trigger-dark);
+      box-shadow: var(--footer-shadow-dark);
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      padding: 5px;
+      text-align: center;
+      font-size: 14px;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+      border-radius: 20px 20px 0 0;
+    }
+    :root[data-theme="dark"] .sheet-footer {
+      background: var(--footer-dark);
+      color: var(--text-trigger-light);
+      box-shadow: var(--footer-shadow-light);
+    }
+    
+    .blur-box {
+      padding: 10px 20px;
+      border-radius: 50px;
+    }
+    
+    /* TEKS BERGERAK */
+    .doa {
+      font-weight: bold;
+      background: linear-gradient(
+        90deg,
+        red, black, #b31d1d,
+        red, black, #b31d1d,
+        red, black, #b31d1d,
+        red, black, #b31d1d,
+        red
+      );
+      background-size: 500% 100%;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: doa 7s linear infinite;
+      transition: background var(--transition);
+    }
+    :root[data-theme="dark"] .doa {
+      background: linear-gradient(
+        90deg,
+        cyan, white, grey,
+        cyan, white, grey,
+        cyan, white, grey,
+        cyan, white, grey,
+        cyan
+      );
+      background-size: 500% 100%;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: doa 7s linear infinite;
+    }
+    @keyframes doa {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 100% 0%; }
+    }
+    
+    .datetime {
+      margin-top: 0px;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: bold;
+    }
+
+    .foto-rgb {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: black;
+      border: 2px solid #8a8a8a;
+      box-shadow:
+        0 0 2px red,
+        0 0 6px green,
+        0 0 10px cyan;
+      animation: rgbGlow 4s infinite linear;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    @keyframes rgbGlow {
+      0%   { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
+      25%  { box-shadow: 0 0 4px green, 0 0 7px blue, 0 0 10px red; }
+      50%  { box-shadow: 0 0 6px cyan, 0 0 9px red, 0 0 12px green; }
+      75%  { box-shadow: 0 0 4px red, 0 0 7px green, 0 0 10px blue; }
+      100% { box-shadow: 0 0 2px cyan, 0 0 5px green, 0 0 8px blue; }
+    }
+    
+    .fotomuter {
+      height: 100%;
+      width: 100%;
+      animation: muterTerus 5s linear infinite;
+      animation-play-state: paused;
+      transform-origin: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @keyframes muterTerus {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    
+    .fotoframe {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    #playPauseBtn {
+      position: absolute;
+      z-index: 9999;
+      height: 50px;
+      width: 50px;
+      font-size: 5px;
+      border-radius: 50%;
+      background-color: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .fredericka-the-great-regular {
+      font-family: "Fredericka the Great", serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 40px;
+      line-height: 1.4;
+      display: inline-flex;
+      flex-direction: column;  /* biar vertikal */
+      align-items: center;     /* rata tengah */
+    }
+
+    .fredericka-the-great-regular .line {
+      display: inline-block;
+    }
+
+    .fredericka-the-great-regular .divider {
+      height: 1px;
+      margin: 0.5px 0;
+      border-radius: 0.5px;
+      align-self: stretch;
+      /* pola lurus horizontal */
+      background: repeating-linear-gradient(
+        to right,     /* lurus ke samping */
+        cyan 0px,
+        cyan 20px,
+        blue 20px,
+        blue 40px,
+        cyan 40px,
+        cyan 60px,
+        red 60px,
+        red 80px
+      );
+      background-size: 80px 100%; /* ulangi pola sepanjang lebar */
+      animation: barber 2s linear infinite;
+      transition: background var(--transition);
+    }
+    :root[data-theme="dark"] .fredericka-the-great-regular .divider {
+      background: repeating-linear-gradient(
+        to right,     /* lurus ke samping */
+        white 0px,
+        white 20px,
+        blue 20px,
+        blue 40px,
+        white 40px,
+        white 60px,
+        red 60px,
+        red 80px
+      );
+      background-size: 80px 100%; /* ulangi pola sepanjang lebar */
+      animation: barber 2s linear infinite;
+    }
+
+    @keyframes barber {
+      from { background-position: 0 0; }
+      to   { background-position: 80px 0; }
+    }
+
+    .button-wrap {
+      position: fixed;
+      display: flex;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .button-icon{
+      width: 28px;
+      height: 28px;
+      display: block;
+      border-radius: 50%;
+      object-fit: contain;
+      transition:
+        opacity .25s ease,
+        transform .28s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .fullscreen-btn .button-icon{
+      position: absolute;
+      opacity: 0;
+      transform: scale(.6);
+      pointer-events: none;
+    }
+
+    .fullscreen-btn .button-icon.active-icon{
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+    }
+
+    .scroll-btn{
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: rgb(224, 224, 224, 0.7);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 0 6px white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background .35s ease,
+        transform .35s cubic-bezier(.4,0,.2,1),
+        box-shadow .35s ease;
+    }
+
+    :root[data-theme="dark"] .scroll-btn{
+      background: rgb(0, 0, 0, 0.7);
+      box-shadow: 0 0 6px black;
+    }
+
+    /* mode up = biru */
+    .scroll-btn.up{
+      background: rgb(37, 99, 235, 0.7);
+      box-shadow: 0 0 10px rgba(37,99,235,.8);
+    }
+
+    :root[data-theme="dark"] .scroll-btn.up{
+      background: rgb(37, 99, 235, 0.7);
+      box-shadow: 0 0 10px rgba(37,99,235,.8);
+    }
+
+    /* arah tangan */
+    .scroll-btn .button-icon{
+      transform: rotate(180deg);
+      transition: transform .35s ease;
+    }
+
+    .scroll-btn.up .button-icon{
+      transform: rotate(0deg);
+    }
+      
+    .refresh-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: rgb(224, 224, 224, 0.7);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 6px white;
+      backdrop-filter: blur(4px);
+      transition:
+        background .3s ease,
+        box-shadow .3s ease,
+        transform .25s cubic-bezier(.4,0,.2,1);
+      -webkit-tap-highlight-color: transparent;
+    }
+    :root[data-theme="dark"] .refresh-btn {
+      background: rgb(0, 0, 0, 0.7);
+      box-shadow: 0 0 6px black;
+    }
+    
+    /* scale DI TOMBOL */
+    .refresh-btn:active {
+      transform: scale(.95);
+    }
+    
+    /* ikon */
+    .refresh-btn .icon {
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* 🔴 state loading */
+    .refresh-btn.loading {
+      background: rgb(220, 38, 38);
+      box-shadow: 0 0 14px rgba(220,38,38,.9);
+    }
+    :root[data-theme="dark"] .refresh-btn.loading {
+      background: rgb(220, 38, 38);
+      box-shadow: 0 0 14px rgba(220,38,38,.9);
+    }
+    
+    /* 🔄 MUTER CUMA IKON */
+    .refresh-btn.loading .icon {
+      animation: spin .8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* =========================
+       FULLSCREEN FIX FINAL
+    ========================= */
+
+    body.fullscreen-active {
+      overflow: hidden;
+    }
+
+    #header,
+    .sheet-footer {
+      transition: transform .4s ease, opacity .4s ease, visibility .4s ease;
+    }
+
+    body.fullscreen-active #header {
+      transform: translateY(-120%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      position: fixed;
+    }
+
+    body.fullscreen-active .sheet-footer {
+      transform: translateY(120%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      position: fixed;
+    }
+
+    body.fullscreen-active .viewpager,
+    body.fullscreen-active .page-1,
+    body.fullscreen-active .frame-exel-1 {
+      height: 100vh !important;
+      margin: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    body.fullscreen-active .button-wrap {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10001;
+    } 
+    
+    /* FULLSCREEN RAPAT TOTAL */
+
+    body.fullscreen-active .fullscreen-sheet .sheetContainer iframe{
+        width: 100% !important;
+        height: 100% !important;
+
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: block !important;
+    }
+
+    /* parent jangan ikut scroll */
+    body.fullscreen-active .frame-exel-1{
+      overflow: hidden !important;
+    }
+
+    /* hide tombol scroll */
+    body.fullscreen-active .scroll-btn{
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(.7);
+      transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+    }
+    
+    .fullscreen-btn{
+      position: relative;
+      overflow: hidden;
+      position: relative;
+      overflow: hidden;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: rgb(224, 224, 224, 0.7);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 0 6px white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background .35s ease,
+        transform .35s cubic-bezier(.4,0,.2,1),
+        box-shadow .35s ease;
+      will-change: transform;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root[data-theme="dark"] .fullscreen-btn{
+      background: rgb(0, 0, 0, 0.7);
+      box-shadow: 0 0 6px black;
+    }
+
+    .fullscreen-btn span{
+      display: inline-block;
+      transition: transform .5s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .fullscreen-btn.active{
+      background: rgb(37, 99, 235, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        gap: 5px;
+      }
+    
+      .header-container h1 {
+        font-size: 25px;
+        margin-left: 10px;
+      }
+      
+      .foto-rgb {
+        position: relative;
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+
+    /* =========================================
+       FINAL FULLSCREEN FIX - NO MENDELEP
+    ========================================= */
+
+    body.fullscreen-active{
+      overflow: hidden !important;
+    }
+
+    body.fullscreen-active .fullscreen-sheet,
+    body.fullscreen-active .sheetContainer,
+    body.fullscreen-active .sheetContainer iframe{
+      transform: none !important;
+    }
+
+    body.fullscreen-active .sheetContainer{
+      position: relative !important;
+
+      width: 100% !important;
+      height: 100% !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
+      border-radius: 30px !important;
+      overflow: hidden !important;
+    }
+
+    body.fullscreen-active .fullscreen-sheet{
+      position: fixed !important;
+
+      top: 10px !important;
+      left: 10px !important;
+      right: 10px !important;
+      bottom: 10px !important;
+
+      overflow: hidden !important;
+
+      border-radius: 20px !important;
+
+      z-index: 999999 !important;
+    }
+
+    body.fullscreen-active .sheetContainer iframe{
+      position: absolute !important;
+      inset: 0 !important;
+
+      width: 100% !important;
+      height: 100% !important;
+
+      display: block !important;
+
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* FIX RADIUS KIRI BAWAH */
+    body.fullscreen-active .sheetContainer{
+      border-radius: 20px !important;
+
+      overflow: hidden !important;
+
+      clip-path: inset(0 round 20px) !important;
+    }
+
+    body.fullscreen-active .sheetContainer iframe{
+      border-radius: 20px !important;
+    }

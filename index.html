@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝕂𝔸𝕃𝕂𝕌𝕃𝔸𝕊𝕀</title>
+  
+  <!-- ICON UNTUK BROWSER -->
+  <link rel="icon" type="images/png" sizes="32x32" href="aplikasi/favicon-32x32.png">
+  <link rel="icon" type="images/png" sizes="16x16" href="aplikasi/favicon-16x16.png">
+  
+  <!-- ICON UNTUK APPLE -->
+  <link rel="apple-touch-icon" sizes="180x180" href="aplikasi/apple-touch-icon.png">
+  
+  <!-- MANIFEST UNTUK PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Arisan CE">
+  
+  <!-- FONT-1 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/dark_mode.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/view_pager.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-container">
+      <div class="foto-rgb">
+        <audio id="music" src="music/lagu.mp3" loop></audio>
+        <button id="playPauseBtn">
+          <img id="icon" src="images/play.png" alt="Play" width="25">
+        </button>
+        <div class="fotomuter" id="fotomuter">
+          <img class="fotoframe" src="images/logo.png">
+        </div>
+        <script>
+          const fotomuter = document.getElementById('fotomuter');
+          const tombol = document.getElementById('playPauseBtn');
+          const musik = document.getElementById('music');
+          const icon = document.getElementById('icon');
+          tombol.addEventListener('click', () => {
+            if (musik.paused) {
+              musik.play();
+              fotomuter.style.animationPlayState = 'running';
+              icon.src = "images/pause.png";
+              icon.alt = "Pause";
+            } else {
+              musik.pause();
+              fotomuter.style.animationPlayState = 'paused';
+              icon.src = "images/play.png";
+              icon.alt = "Play";
+            }
+          });
+        </script>
+      </div>
+      <h1 class="fredericka-the-great-regular">
+        <span class="line">OFFICE UTILITY SYSTEM</span>
+        <span class="divider"></span>
+        <span class="line">~ DASHBOARD ~</span>
+      </h1>
+    </div>
+    <div class="tab-bar">
+     <button class="active"><span>Calculation History</span></button>
+     <button><span>Smart Calculation</span></button>
+     <button><span>Calibration</span></button>
+     <button><span>The Billionaire</span></button>
+    </div>  
+  </header>
+  <!-- ISI -->
+  <div style="z-index: 1;" class="viewpager" id="pager">
+    <section class="page-1">
+      <div class="frame-exel-1 sheetContainer">
+        <iframe 
+          src="https://docs.google.com/spreadsheets/d/1FUErzl6rhwB-Oqb7iX4JmEFDQnapCCs7FD2Li3VQmB0/edit?gid=846087892#gid=846087892/edit"
+          width="100%" 
+          height="100%"
+          class="exel">
+        </iframe>
+      </div>
+    </section>
+    <section class="page-1">
+      <div class="frame-exel-1 sheetContainer">
+        <iframe 
+          src="https://docs.google.com/spreadsheets/d/1QMT3bnv8qhzSNoBlfG6F81KQvUHTKR1guMeWq4Kug6A/edit"
+          width="100%" 
+          height="100%"
+          class="exel">
+        </iframe>
+      </div>
+    </section>
+    <section class="page-1">
+      <div class="frame-exel-1 sheetContainer">
+        <iframe 
+          src="https://docs.google.com/spreadsheets/d/1DBgHdH_vtXXJofCXTyiIzuQVJWAjEC6Zpm9UipAHYhc/edit?gid=1340401120#gid=1340401120"
+          width="100%" 
+          height="100%"
+          class="exel">
+        </iframe>
+      </div>
+    </section>
+    <section class="page-1">
+      <div class="frame-exel-1 sheetContainer">
+        <iframe 
+          src="https://docs.google.com/spreadsheets/d/1KxJR5NSWUlyqS_vVkQcf-AjBrVZ9JYX1r5bQBX8PiDs/edit?gid=2079702370#gid=2079702370"
+          width="100%" 
+          height="100%"
+          class="exel">
+        </iframe>
+      </div>
+    </section>
+  </div>
+  <div class="button-wrap">
+    <button id="scrollBtn" class="scroll-btn" aria-label="Scroll">
+      <span id="icon">
+        <img class="button-icon" src="images/up.gif">
+      </span>
+    </button>
+    <div class="switch" id="themeToggle">
+      <div class="knob">
+        <span class="icon-goyang sun">
+          <img src="images/light.png">
+        </span>
+        <span class="icon-goyang moon">
+          <img src="images/dark.png">
+        </span>
+      </div>
+    </div>
+    <button id="refreshBtn" class="refresh-btn" aria-label="Refresh">
+      <span class="icon">
+        <img class="button-icon" src="images/refresh.gif">
+      </span>
+    </button>
+    <button id="sheetToggleBtn"
+            class="fullscreen-btn"
+            onclick="toggleSheet()">
+      <img id="openIcon"
+           class="button-icon active-icon"
+           src="images/open.gif">
+      <img id="closeIcon"
+           class="button-icon"
+           src="images/close.gif">
+    </button>
+  </div>
+  <div class="sheet-footer">
+    <div class="blur-box">
+      <div class="doa">꧁لَا إِلهَ إِلَّا اللَّهُ مُحَمَّدْ رَسُولُ اللَّهِ꧂</div>
+      <div class="datetime" id="datetime">Memuat waktu...</div>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
