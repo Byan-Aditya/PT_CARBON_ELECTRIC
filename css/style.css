@@ -634,3 +634,87 @@
     body.fullscreen-active .sheetContainer iframe{
       border-radius: 20px !important;
     }
+    
+    .login-box{
+      position: relative;
+      margin-top: 410px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      width: auto;
+    }
+
+    .login-box h3{
+      color:white;
+      text-align:center;
+      margin:0;
+    }
+
+    .login-box input{
+      padding:10px;
+      border:none;
+      border-radius:10px;
+      text-align:center;
+    }
+
+    .password-error{
+      border:2px solid #ff3b3b !important;
+      box-shadow:0 0 15px rgba(255,59,59,.6);
+      animation:shake .3s;
+    }
+
+    @keyframes shake{
+      0%,100%{
+        transform:translateX(0);
+      }
+      25%{
+        transform:translateX(-5px);
+      }
+      75%{
+        transform:translateX(5px);
+      }
+    }
+    
+    .password-wrap{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      width:100%;
+    }
+
+    .password-wrap input{
+      flex:1;
+      height:45px;
+      border:none;
+      outline:none;
+      border-radius:25px;
+      padding:0 15px;
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(10px);
+      color:#fff;
+    }
+
+    .password-wrap input::placeholder{
+      color:rgba(255,255,255,.7);
+    }
+
+    .login-circle{
+      width:35px;
+      height:35px;
+      border:none;
+      border-radius:50%;
+      cursor:pointer;
+      font-size:20px;
+      font-weight:bold;
+      background:#fff;
+      color:#000;
+      transition:.3s;
+    }
+
+    .login-circle:hover{
+      transform:scale(1.08);
+    }
+
+    .login-circle:active{
+      transform:scale(.95);
+    }
