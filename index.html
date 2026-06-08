@@ -28,8 +28,32 @@
   <link rel="stylesheet" href="css/dark_mode.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/view_pager.css">
+  <link rel="stylesheet" href="css/splash_screen.css">
 </head>
 <body>
+  <div class="intro-wrapper" id="intro">
+    <img src="images/logo.png" alt="Intro Logo" class="intro-logo" id="introLogo" />
+    <div id="loginBox" class="login-box">
+      <h3 class="fredericka-the-great-regular" style="font-size: 35px;">
+          Authentication Required
+      </h3>
+        <div class="password-wrap">
+          <input
+            type="password"
+            id="passwordInput"
+            placeholder="Authorize as Byan..."
+          >
+
+          <button id="loginBtn" class="login-circle">
+            ➜
+          </button>
+        </div>
+      <p id="errorText"></p>
+    </div>
+    <div class="splash-screen-text" id="loadingText" style="display:none;">
+      Loading<span id="dots"></span>
+    </div>
+  </div>
   <!-- HEADER -->
   <header id="header">
     <div class="header-container">
