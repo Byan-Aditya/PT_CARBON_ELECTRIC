@@ -232,6 +232,118 @@ self.addEventListener("fetch", event => {
   );
 });
 
+// === SPLASH SCREEN===
+document.addEventListener("DOMContentLoaded", () => {
+
+  const PASSWORD = "181297";
+
+  const introLogo = document.getElementById("introLogo");
+  const fotomuter = document.getElementById("fotomuter");
+  const intro = document.getElementById("intro");
+  const splashText = document.querySelector(".splash-screen-text");
+
+  const loginBtn = document.getElementById("loginBtn");
+  const passwordInput = document.getElementById("passwordInput");
+  const loginBox = document.getElementById("loginBox");
+
+  const assets = [...document.images];
+  let loadedCount = 0;
+  const totalAssets = assets.length;
+
+  function updateProgress(asset) {
+    if (asset.dataset.done) return;
+    asset.dataset.done = true;
+
+    loadedCount++;
+
+    const percent = Math.min(
+      100,
+      Math.round((loadedCount / totalAssets) * 100)
+    );
+
+    splashText.textContent = `Loading ${percent}%`;
+  }
+
+  assets.forEach(asset => {
+    if (asset.complete) {
+      updateProgress(asset);
+    } else {
+      asset.addEventListener("load", () => updateProgress(asset));
+      asset.addEventListener("error", () => updateProgress(asset));
+    }
+  });
+
+  function startAnimation() {
+
+    introLogo.style.width = "250px";
+    introLogo.style.height = "250px";
+    introLogo.style.left = "50%";
+    introLogo.style.top = "50%";
+    introLogo.style.transform = "translate(-50%, -50%)";
+
+    const targetRect = fotomuter.getBoundingClientRect();
+
+    document.body.classList.add("loaded");
+
+    const isMobile = window.matchMedia("(max-width:768px)").matches;
+    const logoSize = isMobile ? 60 : 70;
+
+    setTimeout(() => {
+
+      splashText.classList.add("hide");
+
+      introLogo.style.width = logoSize + "px";
+      introLogo.style.height = logoSize + "px";
+      introLogo.style.left = `${targetRect.left}px`;
+      introLogo.style.top = `${targetRect.top + window.scrollY}px`;
+      introLogo.style.transform = "translate(0,0)";
+
+    }, 400);
+
+    setTimeout(() => {
+      intro.classList.add("hide");
+    }, 2500);
+  }
+
+  function showError() {
+
+    passwordInput.value = "";
+
+    passwordInput.classList.add("password-error");
+
+    setTimeout(() => {
+      passwordInput.classList.remove("password-error");
+    }, 500);
+
+    passwordInput.focus();
+  }
+
+  function masuk() {
+
+    if (passwordInput.value === PASSWORD) {
+
+      loginBox.style.display = "none";
+      splashText.style.display = "block";
+
+      startAnimation();
+
+    } else {
+
+      showError();
+
+    }
+  }
+
+  loginBtn?.addEventListener("click", masuk);
+
+  passwordInput?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      masuk();
+    }
+  });
+
+});
+
 // === FULLSCREEN TOGLE ===
 
 function toggleSheet(){
@@ -259,3 +371,4 @@ function toggleSheet(){
 
   }
 }
+
