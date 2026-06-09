@@ -1,7 +1,7 @@
     .intro-wrapper {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(12px);
       z-index: 9999;
       display: flex;
@@ -57,4 +57,47 @@
 
     .splash-screen-text.hide {
       opacity: 0;
+    }
+    
+    .garis {
+      height: 1.5px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 0.5px;
+      align-self: stretch;
+      /* pola lurus horizontal */
+      background: repeating-linear-gradient(
+        to right,     /* lurus ke samping */
+        cyan 0px,
+        cyan 20px,
+        blue 20px,
+        blue 40px,
+        cyan 40px,
+        cyan 60px,
+        red 60px,
+        red 80px
+      );
+      background-size: 80px 100%; /* ulangi pola sepanjang lebar */
+      animation: barber 2s linear infinite;
+      transition: background var(--transition);
+    }
+    :root[data-theme="dark"] .garis {
+      background: repeating-linear-gradient(
+        to right,     /* lurus ke samping */
+        white 0px,
+        white 20px,
+        blue 20px,
+        blue 40px,
+        white 40px,
+        white 60px,
+        red 60px,
+        red 80px
+      );
+      background-size: 80px 100%; /* ulangi pola sepanjang lebar */
+      animation: barber 2s linear infinite;
+    }
+
+    @keyframes barber {
+      from { background-position: 0 0; }
+      to   { background-position: 80px 0; }
     }
