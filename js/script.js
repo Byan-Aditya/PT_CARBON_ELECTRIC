@@ -235,7 +235,7 @@ self.addEventListener("fetch", event => {
 // === SPLASH SCREEN===
 document.addEventListener("DOMContentLoaded", () => {
 
-  const PASSWORD = "181297";
+  const PASSWORD = atob("MTgxMjk3");
 
   const introLogo = document.getElementById("introLogo");
   const fotomuter = document.getElementById("fotomuter");
