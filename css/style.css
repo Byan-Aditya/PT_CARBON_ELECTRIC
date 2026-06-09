@@ -611,12 +611,9 @@
     body.fullscreen-active .sheetContainer iframe{
       position: absolute !important;
       inset: 0 !important;
-
       width: 100% !important;
       height: 100% !important;
-
       display: block !important;
-
       border: none !important;
       margin: 0 !important;
       padding: 0 !important;
@@ -625,9 +622,7 @@
     /* FIX RADIUS KIRI BAWAH */
     body.fullscreen-active .sheetContainer{
       border-radius: 20px !important;
-
       overflow: hidden !important;
-
       clip-path: inset(0 round 20px) !important;
     }
 
@@ -637,10 +632,10 @@
     
     .login-box{
       position: relative;
-      margin-top: 410px;
+      margin-top: 380px;
       display:flex;
       flex-direction:column;
-      gap:10px;
+      gap:0px;
       width: auto;
     }
 
