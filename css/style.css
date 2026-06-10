@@ -35,6 +35,11 @@
       background: var(--background-dark);
     }
     
+body.lock-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+}
+    
     /* HEADER */
     header {
       background: var(--header-light);
@@ -685,7 +690,7 @@
       border-radius:25px;
       padding:0 15px;
       background:rgba(255,255,255,.15);
-      backdrop-filter:blur(10px);
+      backdrop-filter:blur(0px);
       color:#fff;
     }
 
@@ -712,4 +717,41 @@
 
     .login-circle:active{
       transform:scale(.95);
+    }
+    
+    #mobile-block{
+      position:fixed;
+      inset:0;
+      background:rgba(20,20,20);
+      backdrop-filter:blur(0px);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:999999;
+    }
+
+    #mobile-block .popup{
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(0px);
+      border:1px solid #444;
+      padding:20px;
+      border-radius:30px;
+      text-align:center;
+      max-width:300px;
+      color:#e3e3e3;
+    }
+
+    #mobile-block button{
+      font-family: 'Anton';
+      margin-top:10px;
+      padding:8px 15px;
+      cursor:pointer;
+      border-radius:30px;
+    }
+
+    .logo-popup{
+      width:200px;
+      height:auto;
+      display:block;
+      margin:15px auto;
     }
