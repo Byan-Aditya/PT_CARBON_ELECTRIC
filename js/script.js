@@ -235,6 +235,8 @@ self.addEventListener("fetch", event => {
 // === SPLASH SCREEN===
 document.addEventListener("DOMContentLoaded", () => {
 
+  document.body.classList.add("lock-scroll");
+  
   const PASSWORD = atob("MTgxMjk3");
 
   const introLogo = document.getElementById("introLogo");
@@ -301,6 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 400);
 
     setTimeout(() => {
+      document.body.classList.remove("lock-scroll");
       intro.classList.add("hide");
     }, 2500);
   }
@@ -372,3 +375,18 @@ function toggleSheet(){
   }
 }
 
+// === Access Denied..! ===
+function checkDevice() {
+  const isMobile =
+    /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+  const isSmallScreen = window.innerWidth < 1024;
+
+  if (isMobile && isSmallScreen) {
+    document.getElementById('mobile-block').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+checkDevice();
+window.addEventListener('resize', checkDevice);
